@@ -1,6 +1,26 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Heart, Stethoscope, Brain, Microscope, Star, Menu, X, Award, Building2, FlaskRound as Flask, Users, Trophy, Guitar as Hospital, Microscope as Microscope2, Facebook, Twitter, Linkedin, Instagram, Check } from 'lucide-react';
 
+const HospitalIcon = () => (
+  <svg 
+    className="w-8 h-8" 
+    viewBox="0 0 32 32" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path 
+      d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2z" 
+      className="fill-blue-600"
+    />
+    <path 
+      d="M16 7v18M7 16h18" 
+      stroke="white" 
+      strokeWidth="3" 
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
 function App() {
   const [formData, setFormData] = useState({
     name: '',
@@ -22,6 +42,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [successEmail, setSuccessEmail] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,24 +52,53 @@ function App() {
   const handleAppointmentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!appointmentData.name || !appointmentData.email || !appointmentData.phone || 
-        !appointmentData.date || !appointmentData.time || !appointmentData.doctor) {
-      alert('Please fill in all required fields');
-      return;
-    }
+    // Store email for success message
+    const userEmail = appointmentData.email;
+
+    // Format the date and time
+    const formattedDate = new Date(appointmentData.date).toLocaleDateString();
+    const formattedTime = appointmentData.time;
+
+    // Create the payload with all required information
+    const payload = {
+      appointmentRequest: {
+        patient: {
+          name: appointmentData.name,
+          email: appointmentData.email,
+          phone: appointmentData.phone
+        },
+        appointment: {
+          date: formattedDate,
+          time: formattedTime,
+          doctor: appointmentData.doctor,
+          notes: appointmentData.notes || 'No additional notes'
+        },
+        metadata: {
+          submittedAt: new Date().toISOString(),
+          source: 'website',
+          status: 'pending'
+        }
+      }
+    };
 
     try {
       const response = await fetch('https://hook.eu2.make.com/jpbkqmdmjnfpzslf1uqtta5c4hik1w3d', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify(appointmentData)
+        body: JSON.stringify(payload)
       });
+
+      console.log('Response status:', response.status);
+      const responseText = await response.text();
+      console.log('Response body:', responseText);
 
       if (response.ok) {
         setIsAppointmentModalOpen(false);
         setShowSuccessMessage(true);
+        setSuccessEmail(userEmail);
         setAppointmentData({
           name: '',
           email: '',
@@ -202,10 +252,10 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Top Bar */}
-      <div className="bg-gradient-to-r from-gray-900 to-gray-800 text-gray-300 py-2">
+      <div className="hidden md:block bg-gradient-to-r from-gray-900 to-gray-800 text-gray-300 py-2">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm">
-            <div className="flex items-center space-x-4 mb-2 md:mb-0">
+          <div className="flex justify-between items-center text-sm">
+            <div className="flex space-x-4">
               <div className="flex items-center hover:text-white transition-colors">
                 <MapPin className="w-4 h-4 mr-1" />
                 <span>123 Healthcare Avenue, Medical District</span>
@@ -234,10 +284,13 @@ function App() {
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 shadow-sm mt-9">
+      <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 shadow-sm md:mt-9">
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-16">
-            <div className="text-xl font-bold gradient-text">Elite Care Hospital</div>
+            <div className="flex items-center space-x-2">
+              <HospitalIcon />
+              <div className="text-xl font-bold gradient-text">Elite Care Hospital</div>
+            </div>
             
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
@@ -267,15 +320,48 @@ function App() {
           <div className="md:hidden bg-white border-t animate-[slideIn_0.3s_ease-out]">
             <div className="container mx-auto px-6 py-4">
               <div className="flex flex-col space-y-4">
+                {/* Navigation Items First */}
                 {navItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:translate-x-2"
+                    className="text-gray-600 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 text-center"
                   >
                     {item.label}
                   </button>
                 ))}
+
+                {/* Divider */}
+                <div className="border-t border-gray-200 my-2"></div>
+
+                {/* Contact Information at the end */}
+                <div className="flex flex-col items-center space-y-3 text-gray-600 pt-2">
+                  {/* Social Media Links */}
+                  <div className="flex justify-center space-x-6 mb-3">
+                    <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors">
+                      <Facebook className="w-5 h-5" />
+                    </a>
+                    <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors">
+                      <Twitter className="w-5 h-5" />
+                    </a>
+                    <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors">
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a href="#" className="text-gray-600 hover:text-blue-600 transition-colors">
+                      <Instagram className="w-5 h-5" />
+                    </a>
+                  </div>
+
+                  <div className="flex items-center justify-center space-x-2">
+                    <Mail className="w-5 h-5 text-blue-600" />
+                    <span className="text-center">info@elitecarehospital.com</span>
+                  </div>
+
+                  <div className="flex items-center justify-center space-x-2">
+                    <MapPin className="w-5 h-5 text-blue-600" />
+                    <span className="text-center">123 Healthcare Avenue, Medical District</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -283,7 +369,7 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white pt-32">
+      <section id="home" className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white pt-16 md:pt-32">
         <div className="container mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 animate-[slideIn_1s_ease-out]">
@@ -295,7 +381,7 @@ function App() {
               </p>
               <button 
                 onClick={() => setIsAppointmentModalOpen(true)}
-                className="btn-primary"
+                className="btn-primary relative z-20 touch-manipulation"
               >
                 Book Appointment
               </button>
@@ -758,7 +844,7 @@ function App() {
                   <p className="text-white/90">
                     We will send a confirmation email to:
                     <span className="block font-semibold mt-1 text-white">
-                      {appointmentData.email}
+                      {successEmail}
                     </span>
                   </p>
                 </div>

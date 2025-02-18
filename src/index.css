@@ -61,7 +61,10 @@ body {
            hover:from-blue-700 hover:to-blue-900
            transform transition-all duration-300
            hover:scale-105 hover:shadow-lg
-           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50;
+           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50
+           active:scale-95
+           cursor-pointer
+           touch-manipulation;
   }
 
   .btn-secondary {
