@@ -582,7 +582,7 @@ function App() {
       {/* Appointment Modal */}
       {isAppointmentModalOpen && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 rounded-2xl w-full max-w-5xl relative animate-[fadeIn_0.3s_ease-out] shadow-2xl">
+          <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 rounded-2xl w-full max-w-5xl relative animate-[fadeIn_0.3s_ease-out] shadow-2xl max-h-[90vh] overflow-y-auto">
             {/* Close Button */}
             <button 
               onClick={() => setIsAppointmentModalOpen(false)}
@@ -592,21 +592,21 @@ function App() {
             </button>
 
             {/* Background Decorative Elements */}
-            <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 opacity-10 pointer-events-none">
               <div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
               <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-300 rounded-full filter blur-3xl translate-x-1/2 translate-y-1/2"></div>
             </div>
             
-            <div className="p-8 relative z-0">
-              <h2 className="text-3xl font-bold text-white text-center mb-8">Book an Appointment</h2>
-              <form onSubmit={handleAppointmentSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="p-4 sm:p-6 md:p-8 relative z-0">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-6 sm:mb-8">Book an Appointment</h2>
+              <form onSubmit={handleAppointmentSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                 {/* Left Column */}
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   <div>
                     <label className="block text-white/80 mb-2 text-sm">Full Name</label>
                     <input
                       type="text"
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg 
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/10 border border-white/20 rounded-lg 
                                focus:outline-none focus:border-white/40 text-white placeholder-white/40
                                transition-colors"
                       placeholder="Your full name"
@@ -620,7 +620,7 @@ function App() {
                     <label className="block text-white/80 mb-2 text-sm">Email</label>
                     <input
                       type="email"
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg 
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/10 border border-white/20 rounded-lg 
                                focus:outline-none focus:border-white/40 text-white placeholder-white/40
                                transition-colors"
                       placeholder="Your email"
@@ -634,7 +634,7 @@ function App() {
                     <label className="block text-white/80 mb-2 text-sm">Phone Number</label>
                     <input
                       type="tel"
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg 
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/10 border border-white/20 rounded-lg 
                                focus:outline-none focus:border-white/40 text-white placeholder-white/40
                                transition-colors"
                       placeholder="Your phone number"
@@ -647,10 +647,10 @@ function App() {
                   <div>
                     <label className="block text-white/80 mb-2 text-sm">Additional Notes</label>
                     <textarea
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg 
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/10 border border-white/20 rounded-lg 
                                focus:outline-none focus:border-white/40 text-white placeholder-white/40
                                transition-colors"
-                      rows={5}
+                      rows={4}
                       placeholder="Any specific requirements or concerns..."
                       value={appointmentData.notes}
                       onChange={(e) => setAppointmentData({...appointmentData, notes: e.target.value})}
@@ -659,12 +659,12 @@ function App() {
                 </div>
 
                 {/* Right Column */}
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   <div>
                     <label className="block text-white/80 mb-2 text-sm">Select Doctor</label>
                     <select
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg 
-                               focus:outline-none focus:border-white/40 text-white placeholder-white/40
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/10 border border-white/20 rounded-lg 
+                               focus:outline-none focus:border-white/40 text-white
                                transition-colors"
                       value={appointmentData.doctor}
                       onChange={(e) => setAppointmentData({...appointmentData, doctor: e.target.value})}
@@ -683,7 +683,7 @@ function App() {
                     <label className="block text-white/80 mb-2 text-sm">Preferred Date</label>
                     <input
                       type="date"
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg 
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/10 border border-white/20 rounded-lg 
                                focus:outline-none focus:border-white/40 text-white placeholder-white/40
                                transition-colors"
                       value={appointmentData.date}
@@ -696,7 +696,7 @@ function App() {
                     <label className="block text-white/80 mb-2 text-sm">Preferred Time</label>
                     <input
                       type="time"
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg 
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/10 border border-white/20 rounded-lg 
                                focus:outline-none focus:border-white/40 text-white placeholder-white/40
                                transition-colors"
                       value={appointmentData.time}
@@ -705,11 +705,11 @@ function App() {
                     />
                   </div>
 
-                  {/* Submit Button - Placed at bottom of right column */}
-                  <div className="pt-4">
+                  {/* Submit Button */}
+                  <div className="pt-2 sm:pt-4">
                     <button
                       type="submit"
-                      className="w-full px-8 py-4 bg-white text-blue-600 rounded-lg font-semibold
+                      className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-white text-blue-600 rounded-lg font-semibold
                                hover:bg-blue-50 transition-all duration-300 hover:shadow-lg
                                focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50
                                transform hover:scale-105"
