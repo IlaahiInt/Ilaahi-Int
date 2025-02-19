@@ -43,6 +43,7 @@ function App() {
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [successEmail, setSuccessEmail] = useState('');
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -127,45 +128,63 @@ function App() {
 
   const services = [
     {
-      icon: <Heart className="w-12 h-12 text-blue-600" />,
-      title: "Cardiology",
-      description: "Expert care for heart-related conditions with state-of-the-art facilities."
-    },
-    {
-      icon: <Brain className="w-12 h-12 text-blue-600" />,
-      title: "Neurology",
-      description: "Specialized treatment for neurological disorders by experienced specialists."
-    },
-    {
       icon: <Stethoscope className="w-12 h-12 text-blue-600" />,
-      title: "General Medicine",
-      description: "Comprehensive medical care for all types of health conditions."
+      title: "Medical Clinics",
+      description: "Comprehensive outpatient care with specialized medical consultations and treatments."
     },
     {
       icon: <Microscope className="w-12 h-12 text-blue-600" />,
-      title: "Laboratory Services",
-      description: "Advanced diagnostic testing and laboratory services."
+      title: "Surgical Clinics",
+      description: "Expert surgical consultations and advanced surgical procedures across specialties."
+    },
+    {
+      icon: <Flask className="w-12 h-12 text-blue-600" />,
+      title: "Diagnostic Services",
+      description: "State-of-the-art diagnostic facilities including laboratory tests and imaging services."
+    },
+    {
+      icon: <Phone className="w-12 h-12 text-blue-600" />,
+      title: "Emergency Services",
+      description: "24/7 emergency care with rapid response teams and critical care facilities."
     }
   ];
 
   const doctors = [
     {
-      name: "Dr. Sarah Mitchell",
-      specialty: "Chief of Cardiology",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      quote: "Dedicated to providing exceptional cardiac care with the latest treatments and technologies."
+      name: "Dr. Ikhlaq Ahmad",
+      specialty: "Head of Medical Clinics",
+      image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      quote: "Dedicated to providing comprehensive primary care and specialized medical consultations."
     },
     {
-      name: "Dr. James Wilson",
-      specialty: "Neurosurgery Director",
+      name: "Dr. Muhammad Nazir",
+      specialty: "Chief of Surgical Services",
+      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      quote: "Committed to excellence in surgical care with advanced minimally invasive techniques."
+    },
+    {
+      name: "Dr. Tahir Abbas",
+      specialty: "Director of Diagnostic Services",
       image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      quote: "Committed to advancing neurosurgical techniques for better patient outcomes."
+      quote: "Focused on accurate diagnostics using state-of-the-art technology for better patient care."
     },
     {
-      name: "Dr. Emily Chen",
-      specialty: "Head of Pediatrics",
-      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      quote: "Passionate about providing compassionate care to our youngest patients."
+      name: "Dr. Waqas Ahmad",
+      specialty: "Emergency Medicine Director",
+      image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      quote: "Leading our 24/7 emergency response team with prompt and efficient critical care."
+    },
+    {
+      name: "Dr. Shabana Gujjar",
+      specialty: "Gynecology Specialist",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      quote: "Providing specialized care for women's health with compassion and expertise."
+    },
+    {
+      name: "Dr. Samina Shabbir",
+      specialty: "Pediatrics Specialist",
+      image: "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      quote: "Dedicated to providing the best care for children and supporting their healthy development."
     }
   ];
 
@@ -177,18 +196,28 @@ function App() {
     },
     {
       icon: <Award className="w-12 h-12 text-blue-600" />,
-      title: "Research Recognition",
-      description: "Over 200 published medical research papers in 2024"
+      title: "Quality Certification",
+      description: "ISO 9001:2015 Certified for Quality Management Systems"
     },
     {
       icon: <Users className="w-12 h-12 text-blue-600" />,
       title: "Patient Trust",
-      description: "Served over 1 million patients with 98% satisfaction rate"
+      description: "Served over 3 thousands patients with 98% satisfaction rate"
     },
     {
       icon: <Star className="w-12 h-12 text-blue-600" />,
-      title: "Accreditation",
-      description: "Joint Commission International (JCI) Accredited Hospital"
+      title: "Medical Excellence",
+      description: "Recognized for Advanced Medical Procedures & Innovation"
+    },
+    {
+      icon: <Building2 className="w-12 h-12 text-blue-600" />,
+      title: "Modern Facilities",
+      description: "State-of-the-art infrastructure with latest medical equipment"
+    },
+    {
+      icon: <Heart className="w-12 h-12 text-blue-600" />,
+      title: "Community Service",
+      description: "Provided free healthcare to 2,000+ underprivileged patients"
     }
   ];
 
@@ -196,7 +225,7 @@ function App() {
     {
       icon: <Hospital className="w-12 h-12 text-blue-600" />,
       title: "Modern Infrastructure",
-      description: "State-of-the-art medical facilities spanning 500,000 sq ft"
+      description: "State-of-the-art medical facilities spanning 300,000 sq ft"
     },
     {
       icon: <Microscope2 className="w-12 h-12 text-blue-600" />,
@@ -207,34 +236,82 @@ function App() {
       icon: <Building2 className="w-12 h-12 text-blue-600" />,
       title: "Specialized Units",
       description: "Dedicated departments for specialized care and treatment"
+    },
+    {
+      icon: <Clock className="w-12 h-12 text-blue-600" />,
+      title: "24/7 Emergency Care",
+      description: "Round-the-clock emergency services with rapid response teams"
+    },
+    {
+      icon: <Flask className="w-12 h-12 text-blue-600" />,
+      title: "Modern Laboratory",
+      description: "Fully equipped laboratory for accurate and quick diagnostics"
+    },
+    {
+      icon: <Heart className="w-12 h-12 text-blue-600" />,
+      title: "Patient Comfort",
+      description: "Comfortable patient rooms with modern amenities and care"
     }
   ];
 
   const research = {
     title: "Research & Innovation",
-    description: "Leading the way in medical breakthroughs and innovative treatments",
+    description: "Committed to advancing medical care through research and innovative treatments",
     stats: [
-      { number: "50+", label: "Ongoing Clinical Trials" },
-      { number: "200+", label: "Research Publications" },
-      { number: "25+", label: "International Collaborations" }
+      { number: "10+", label: "Research Projects" },
+      { number: "15+", label: "Medical Publications" },
+      { number: "5+", label: "Academic Partnerships" }
     ]
   };
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      text: "The care I received at Elite Care Hospital was exceptional. The staff was professional and caring.",
-      rating: 5
+      name: "Muhammad Aslam",
+      age: "52",
+      location: "Sargodha",
+      treatment: "Heart Surgery",
+      image: "https://images.unsplash.com/photo-1563990112129-a9a72c0bf6cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+      text: "I am grateful for the successful heart surgery at Elite Care Hospital. Dr. Ikhlaq Ahmad and his team provided exceptional care throughout my treatment."
     },
     {
-      name: "Michael Chen",
-      text: "Top-notch medical facility with state-of-the-art equipment. Highly recommend their services.",
-      rating: 5
+      name: "Khadija Bibi",
+      age: "45",
+      location: "Faisalabad",
+      treatment: "Diabetes Care",
+      image: "https://images.unsplash.com/photo-1551856221-ddb89d13a6ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+      text: "I've been receiving diabetes treatment here. Dr. Shabana Gujjar provided excellent guidance, and my health has significantly improved under her care."
     },
     {
-      name: "Emily Williams",
-      text: "The doctors here are extremely knowledgeable and take time to explain everything clearly.",
-      rating: 5
+      name: "Abdul Majeed",
+      age: "58",
+      location: "Mianwali",
+      treatment: "Joint Replacement",
+      image: "https://images.unsplash.com/photo-1566753323558-f4e0952af115?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+      text: "I came from Mianwali for knee surgery. Dr. Muhammad Nazir performed the surgery excellently. Now I can walk without any pain."
+    },
+    {
+      name: "Amina Batool",
+      age: "35",
+      location: "Bhalwal",
+      treatment: "Maternity Care",
+      image: "https://images.unsplash.com/photo-1548366565-6bbab241282d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+      text: "I chose Elite Care Hospital for my delivery. Dr. Samina Shabbir and the staff provided outstanding care. The hospital facilities are excellent."
+    },
+    {
+      name: "Rana Asif",
+      age: "42",
+      location: "Jhang",
+      treatment: "Emergency Care",
+      image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+      text: "After a road accident, I was admitted to emergency. Dr. Waqas Ahmad's team saved my life. I'm deeply thankful for their quick response and care."
+    },
+    {
+      name: "Nasreen Akhtar",
+      age: "48",
+      location: "Khushab",
+      treatment: "Diagnostic Services",
+      image: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+      text: "I came from Khushab for medical tests. Dr. Tahir Abbas provided accurate diagnosis and timely treatment. My health has improved significantly."
     }
   ];
 
@@ -258,7 +335,11 @@ function App() {
             <div className="flex space-x-4">
               <div className="flex items-center hover:text-white transition-colors">
                 <MapPin className="w-4 h-4 mr-1" />
-                <span>123 Healthcare Avenue, Medical District</span>
+                <span>87-Satellite Town, Sargodha</span>
+              </div>
+              <div className="flex items-center hover:text-white transition-colors">
+                <Phone className="w-4 h-4 mr-1" />
+                <span>+92 300 7472568</span>
               </div>
               <div className="flex items-center hover:text-white transition-colors">
                 <Mail className="w-4 h-4 mr-1" />
@@ -353,13 +434,18 @@ function App() {
                   </div>
 
                   <div className="flex items-center justify-center space-x-2">
-                    <Mail className="w-5 h-5 text-blue-600" />
-                    <span className="text-center">info@elitecarehospital.com</span>
+                    <MapPin className="w-5 h-5 text-blue-600" />
+                    <span className="text-center">87-Satellite Town, Sargodha</span>
                   </div>
 
                   <div className="flex items-center justify-center space-x-2">
-                    <MapPin className="w-5 h-5 text-blue-600" />
-                    <span className="text-center">123 Healthcare Avenue, Medical District</span>
+                    <Phone className="w-5 h-5 text-blue-600" />
+                    <span className="text-center">+92 300 7472568</span>
+                  </div>
+
+                  <div className="flex items-center justify-center space-x-2">
+                    <Mail className="w-5 h-5 text-blue-600" />
+                    <span className="text-center">info@elitecarehospital.com</span>
                   </div>
                 </div>
               </div>
@@ -450,12 +536,22 @@ function App() {
       <section id="achievements" className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-16">Our Achievements</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {achievements.map((achievement, index) => (
-              <div key={index} className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-                <div className="mb-4">{achievement.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">{achievement.title}</h3>
-                <p className="text-gray-600">{achievement.description}</p>
+              <div 
+                key={index} 
+                className="bg-white p-8 rounded-lg shadow-lg hover-card"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="mb-4 transform transition-transform duration-300 hover:scale-110">
+                  {achievement.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  {achievement.title}
+                </h3>
+                <p className="text-gray-600">
+                  {achievement.description}
+                </p>
               </div>
             ))}
           </div>
@@ -463,13 +559,19 @@ function App() {
       </section>
 
       {/* Facilities Section */}
-      <section id="facilities" className="py-20 bg-white">
+      <section id="facilities" className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-16">Our Facilities</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {facilities.map((facility, index) => (
-              <div key={index} className="bg-gray-50 p-8 rounded-lg">
-                <div className="mb-4">{facility.icon}</div>
+              <div 
+                key={index} 
+                className="bg-white p-8 rounded-lg shadow-lg hover-card"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="mb-4 transform transition-transform duration-300 hover:scale-110">
+                  {facility.icon}
+                </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">{facility.title}</h3>
                 <p className="text-gray-600">{facility.description}</p>
               </div>
@@ -497,21 +599,76 @@ function App() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-white">
+      <section id="testimonials" className="py-20 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-16">Patient Testimonials</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 p-8 rounded-lg">
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-4">"{testimonial.text}"</p>
-                <p className="font-semibold text-gray-800">- {testimonial.name}</p>
+          
+          <div className="relative max-w-7xl mx-auto">
+            {/* Testimonial Cards Container */}
+            <div className="relative h-[450px]">
+              <div className="flex transition-transform duration-500 absolute"
+                   style={{ transform: `translateX(-${currentTestimonial * 33.33}%)` }}>
+                {testimonials.map((testimonial, index) => (
+                  <div
+                    key={index}
+                    className="w-1/3 px-4 flex-shrink-0"
+                  >
+                    <div className="bg-white rounded-2xl shadow-xl p-8 relative h-full">
+                      <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-16 h-16 rounded-full border-4 border-white shadow-lg object-cover"
+                        />
+                      </div>
+                      
+                      <div className="mt-8 text-center">
+                        <h3 className="text-xl font-semibold text-gray-800">{testimonial.name}</h3>
+                        <p className="text-blue-600 text-sm mb-2">
+                          {testimonial.age} Years • {testimonial.location}
+                        </p>
+                        <p className="text-gray-600 text-sm mb-4">
+                          Treatment: {testimonial.treatment}
+                        </p>
+                        <p className="text-gray-700 italic">{testimonial.text}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={() => setCurrentTestimonial((prev) => (prev === 0 ? testimonials.length - 3 : prev - 1))}
+              className="absolute left-0 top-[45%] transform -translate-y-1/2 -translate-x-6 bg-white rounded-full p-3 shadow-lg hover:scale-110 transition-transform z-30 cursor-pointer"
+            >
+              <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            
+            <button
+              onClick={() => setCurrentTestimonial((prev) => (prev === testimonials.length - 3 ? 0 : prev + 1))}
+              className="absolute right-0 top-[45%] transform -translate-y-1/2 translate-x-6 bg-white rounded-full p-3 shadow-lg hover:scale-110 transition-transform z-30 cursor-pointer"
+            >
+              <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Dots Navigation */}
+            <div className="flex justify-center space-x-2 mt-8">
+              {[...Array(testimonials.length - 2)].map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentTestimonial(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
+                    index === currentTestimonial ? 'bg-blue-600 w-6' : 'bg-blue-200'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -540,43 +697,33 @@ function App() {
                 {/* Contact Information */}
                 <div className="lg:col-span-2 space-y-6 text-white">
                   <div className="space-y-4">
-                    <div className="flex items-center space-x-4 group">
-                      <div className="bg-white/10 p-3 rounded-lg group-hover:bg-white/20 transition-colors">
-                        <Phone className="w-6 h-6" />
+                    <div className="flex items-center space-x-4">
+                      <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <MapPin className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <p className="text-white/60">Phone</p>
-                        <p className="font-semibold">+1 (555) 123-4567</p>
+                        <h4 className="text-lg font-semibold text-white/90">Address</h4>
+                        <p className="text-white/70">87-Satellite Town, Sargodha</p>
                       </div>
                     </div>
                     
-                    <div className="flex items-center space-x-4 group">
-                      <div className="bg-white/10 p-3 rounded-lg group-hover:bg-white/20 transition-colors">
-                        <Mail className="w-6 h-6" />
+                    <div className="flex items-center space-x-4">
+                      <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Phone className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <p className="text-white/60">Email</p>
-                        <p className="font-semibold">info@elitecarehospital.com</p>
+                        <h4 className="text-lg font-semibold text-white/90">Phone</h4>
+                        <p className="text-white/70">+92 300 7472568</p>
                       </div>
                     </div>
                     
-                    <div className="flex items-center space-x-4 group">
-                      <div className="bg-white/10 p-3 rounded-lg group-hover:bg-white/20 transition-colors">
-                        <MapPin className="w-6 h-6" />
+                    <div className="flex items-center space-x-4">
+                      <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Mail className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <p className="text-white/60">Address</p>
-                        <p className="font-semibold">123 Healthcare Avenue, Medical District</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center space-x-4 group">
-                      <div className="bg-white/10 p-3 rounded-lg group-hover:bg-white/20 transition-colors">
-                        <Clock className="w-6 h-6" />
-                      </div>
-                      <div>
-                        <p className="text-white/60">Hours</p>
-                        <p className="font-semibold">24/7 Emergency Services</p>
+                        <h4 className="text-lg font-semibold text-white/90">Email</h4>
+                        <p className="text-white/70">info@elitecarehospital.com</p>
                       </div>
                     </div>
                   </div>
