@@ -270,7 +270,7 @@ function App() {
       age: "52",
       location: "Sargodha",
       treatment: "Heart Surgery",
-      image: "https://images.unsplash.com/photo-1563990112129-a9a72c0bf6cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
       text: "I am grateful for the successful heart surgery at Elite Care Hospital. Dr. Ikhlaq Ahmad and his team provided exceptional care throughout my treatment."
     },
     {
@@ -278,7 +278,7 @@ function App() {
       age: "45",
       location: "Faisalabad",
       treatment: "Diabetes Care",
-      image: "https://images.unsplash.com/photo-1551856221-ddb89d13a6ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
       text: "I've been receiving diabetes treatment here. Dr. Shabana Gujjar provided excellent guidance, and my health has significantly improved under her care."
     },
     {
@@ -339,7 +339,7 @@ function App() {
               </div>
               <div className="flex items-center hover:text-white transition-colors">
                 <Phone className="w-4 h-4 mr-1" />
-                <span>+92 300 7472568</span>
+                <span>048-3768499 / +92 300 7472568</span>
               </div>
               <div className="flex items-center hover:text-white transition-colors">
                 <Mail className="w-4 h-4 mr-1" />
@@ -440,7 +440,7 @@ function App() {
 
                   <div className="flex items-center justify-center space-x-2">
                     <Phone className="w-5 h-5 text-blue-600" />
-                    <span className="text-center">+92 300 7472568</span>
+                    <span className="text-center">048-3768499 / +92 300 7472568</span>
                   </div>
 
                   <div className="flex items-center justify-center space-x-2">
@@ -677,13 +677,6 @@ function App() {
       <section id="contact" className="py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl relative overflow-hidden">
-            {/* Close Icon */}
-            <div className="absolute top-4 right-4">
-              <button className="text-white/80 hover:text-white transition-colors">
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-
             {/* Background Decorative Elements */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
@@ -713,7 +706,8 @@ function App() {
                       </div>
                       <div>
                         <h4 className="text-lg font-semibold text-white/90">Phone</h4>
-                        <p className="text-white/70">+92 300 7472568</p>
+                        <p className="text-white/70">PTCL: 048-3768499</p>
+                        <p className="text-white/70">Mobile: +92 300 7472568</p>
                       </div>
                     </div>
                     
