@@ -339,7 +339,7 @@ function App() {
               </div>
               <div className="flex items-center hover:text-white transition-colors">
                 <Phone className="w-4 h-4 mr-1" />
-                <span>048-3725899 / +92 300 7472568</span>
+                <span>048-3725899 / +92 321 7472 368</span>
               </div>
               <div className="flex items-center hover:text-white transition-colors">
                 <Mail className="w-4 h-4 mr-1" />
@@ -440,7 +440,7 @@ function App() {
 
                   <div className="flex items-center justify-center space-x-2">
                     <Phone className="w-5 h-5 text-blue-600" />
-                    <span className="text-center">048-3725899 / +92 300 7472568</span>
+                    <span className="text-center">048-3725899 / +92 321 7472368</span>
                   </div>
 
                   <div className="flex items-center justify-center space-x-2">
@@ -707,7 +707,7 @@ function App() {
                       <div>
                         <h4 className="text-lg font-semibold text-white/90">Phone</h4>
                         <p className="text-white/70">PTCL: 048-3725899</p>
-                        <p className="text-white/70">Mobile: +92 300 7472568</p>
+                        <p className="text-white/70">Mobile: +92 321 7472368</p>
                       </div>
                     </div>
                     
