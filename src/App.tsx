@@ -335,7 +335,7 @@ function App() {
             <div className="flex space-x-4">
               <div className="flex items-center hover:text-white transition-colors">
                 <MapPin className="w-4 h-4 mr-1" />
-                <span>87-Satellite Town, Sargodha</span>
+                <span>University Road, opposite Fatima Hospital, Sultan Colony, Sargodha</span>
               </div>
               <div className="flex items-center hover:text-white transition-colors">
                 <Phone className="w-4 h-4 mr-1" />
@@ -435,7 +435,7 @@ function App() {
 
                   <div className="flex items-center justify-center space-x-2">
                     <MapPin className="w-5 h-5 text-blue-600" />
-                    <span className="text-center">87-Satellite Town, Sargodha</span>
+                    <span className="text-center">University Road, opposite Fatima Hospital, Sultan Colony, Sargodha</span>
                   </div>
 
                   <div className="flex items-center justify-center space-x-2">
@@ -696,7 +696,7 @@ function App() {
                       </div>
                       <div>
                         <h4 className="text-lg font-semibold text-white/90">Address</h4>
-                        <p className="text-white/70">87-Satellite Town, Sargodha</p>
+                        <p className="text-white/70">University Road, opposite Fatima Hospital, Sultan Colony, Sargodha</p>
                       </div>
                     </div>
                     
